@@ -1,16 +1,25 @@
-# jquery-formize
+# Formize
 
 jquery-formize is form utilities for jquery.
 
-```
-$('.form').formize();
-```
+## Getting Started
+Download the [production version][min] or the [development version][max].
 
-# METHODS
+[min]: https://raw.github.com/rymizuki/jquery-formize/master/dist/formize.min.js
+[max]: https://raw.github.com/rymizuki/jquery-formize/master/dist/formize.js
 
-a sample form;
+In your web page:
 
-```
+```html
+<script src="jquery.js"></script>
+<script src="dist/formize.min.js"></script>
+<script>
+jQuery(function($) {
+  var name = $('.form').formize('get_value', 'name');
+  $('.form').formize('set_value', 'name', name);
+});
+</script>
+
 <form class="form">
     <input type="text" name="name">
     <input type="text" name="age">
@@ -18,19 +27,14 @@ a sample form;
 </form>
 ```
 
-## initialize
+## Documentation
+_(Coming soon)_
 
-return the form-ize object;
-
-```
-var form = $.formize('.form');
-```
-
-## fillIn
+## Examples
 
 ## set
 
-```
+```javascript
 form.set_value('name', 'tarou');
 form.set_values({
     'name': 'tarou',
@@ -42,11 +46,13 @@ $('.form').formize('set_values', {'name': 'tarou'});
 
 ## get
 
-```
+```javascript
 var name = form.get_value('name');
 var data = form.get_values();
-```
-```
+
 var name = $('.form').formize('get_value', 'name');
 var data = $('.form').formize('get_values');
 ```
+
+## Release History
+_(Nothing yet)_

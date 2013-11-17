@@ -1,0 +1,26 @@
+{
+  "name": "formize",
+  "title": "Formize",
+  "description": "jquery-formize is form utilities for jquery.",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rymizuki/jquery-formize",
+  "author": {
+    "name": "mizuki_r",
+    "email": "ry.mizuki@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rymizuki/jquery-formize.git"
+  },
+  "bugs": "https://github.com/rymizuki/jquery-formize/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/rymizuki/jquery-formize/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
