@@ -28,11 +28,10 @@ jQuery(function($) {
 ```
 
 ## Documentation
-_(Coming soon)_
 
 ## Examples
 
-## set
+## set_value
 
 ```javascript
 form.set_value('name', 'tarou');
@@ -44,7 +43,7 @@ form.set_values({
 $('.form').formize('set_values', {'name': 'tarou'});
 ```
 
-## get
+## get_value
 
 ```javascript
 var name = form.get_value('name');
@@ -52,6 +51,33 @@ var data = form.get_values();
 
 var name = $('.form').formize('get_value', 'name');
 var data = $('.form').formize('get_values');
+```
+
+## get_control
+
+```javascript
+var $ctrl = form.get_control('name'); // retrun jQuery obj
+
+var $ctrl = $('.form').formize('get_control', 'name');
+```
+
+## set_messages_callback
+
+```javscript
+form.set_messages_callback(function (name, message) {
+    form.get_controll(name).after('<p class="error-message">'+message+'</p>');
+});
+```
+
+## set_message
+```javascript
+from.set_message('name', 'name is required');
+```
+
+## reset_messages
+
+```javascript
+form.reset_messages('error-message');
 ```
 
 ## Release History
