@@ -10,34 +10,51 @@
   'use strict';
 
   var Formize = (function () {
-      var Constructor = function ($el, options) {
-          this.$el = $el;
+      var Constructor = function (selector, options) {
+          this.$el = selector instanceof $ ? selector : $(selector);
+          this.el  = this.$el[0];
+          this.options = options;
       };
 
-      Constructor.prototype.get_value = function (name) {
-          return this.$el.find('[name="'+name+'"]').val();
+      Constructor.prototype.getControl = function (name) {
+          var $ctrl = this.$el.find('[name="'+name+'"]');
+          return $ctrl.length > 0 ? $ctrl : null;
       };
 
-      Constructor.prototype.get_values = function () {
+      Constructor.prototype.getControls = function () {
+          return this.$el.find('[name]');
+      };
+
+      Constructor.prototype.getValue = function (name) {
+          var $ctrl = this.getControl(name);
+          return $ctrl ? $ctrl.val() : null;
+      };
+
+      Constructor.prototype.getValues = function () {
           var data = {};
-          this.$el.find('[name]').each(function () {
+          this.getControls().each(function () {
               var $this = $(this);
               data[$this.attr('name')] = $this.val();
           });
           return data;
       };
 
-      Constructor.prototype.set_value = function (name, value) {
-          this.$el.find('[name="'+name+'"]').val(value);
+      Constructor.prototype.setValue = function (name, value) {
+          var $ctrl = this.getControl(name);
+          return $ctrl ? $ctrl.val(value) : null;
       };
 
-      Constructor.prototype.set_values = function (data) {
-          $.each(data, $.proxy(this.set_value, this));
+      Constructor.prototype.setValues = function (data) {
+          $.each(data, $.proxy(this.setValue, this));
       };
 
       return Constructor;
   })(); 
 
+  // Static method.
+  $.formize = function(selector) {
+      return new Formize(selector);
+  };
 
   // Collection method.
   $.fn.formize = function(action, value) {
@@ -46,16 +63,13 @@
             data  = $this.data('formize.data-api');
 
         if (!data) {
-            data = new Formize($this);
+            data = $.formize($this);
             $this.data('formize.data-api', data);
         }
 
-        data[action](value);
+        if (action) {
+            return data[action](value);
+        }
     });
-  };
-
-  // Static method.
-  $.formize = function(selector) {
-      return new Formize($(selector));
   };
 }(jQuery));
