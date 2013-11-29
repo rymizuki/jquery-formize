@@ -13,12 +13,6 @@ In your web page:
 ```html
 <script src="jquery.js"></script>
 <script src="dist/formize.min.js"></script>
-<script>
-jQuery(function($) {
-  var name = $('.form').formize('get_value', 'name');
-  $('.form').formize('set_value', 'name', name);
-});
-</script>
 
 <form class="form">
     <input type="text" name="name">
@@ -29,56 +23,16 @@ jQuery(function($) {
 
 ## Documentation
 
+(comming soon)
+
 ## Examples
 
-## set_value
-
-```javascript
-form.set_value('name', 'tarou');
-form.set_values({
-    'name': 'tarou',
-    'age' : 16
-});
-
-$('.form').formize('set_values', {'name': 'tarou'});
-```
-
-## get_value
-
-```javascript
-var name = form.get_value('name');
-var data = form.get_values();
-
-var name = $('.form').formize('get_value', 'name');
-var data = $('.form').formize('get_values');
-```
-
-## get_control
-
-```javascript
-var $ctrl = form.get_control('name'); // retrun jQuery obj
-
-var $ctrl = $('.form').formize('get_control', 'name');
-```
-
-## set_messages_callback
-
 ```javscript
-form.set_messages_callback(function (name, message) {
-    form.get_controll(name).after('<p class="error-message">'+message+'</p>');
+jQuery(function($) {
+  var form = $.formize('.form');
+
+  var name = form.getValue('name');
+  form.setValue('name', 'tarou');
 });
+
 ```
-
-## set_message
-```javascript
-from.set_message('name', 'name is required');
-```
-
-## reset_messages
-
-```javascript
-form.reset_messages('error-message');
-```
-
-## Release History
-_(Nothing yet)_
